@@ -1,0 +1,85 @@
+.mealCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; // 1:1 Aspect ratio
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .mealInfo {
+    padding: 1.5rem;
+    text-align: center;
+
+    h3 {
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      color: var(--text-color);
+      font-weight: 600;
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+
+      span {
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .category {
+        background-color: rgba(255, 107, 61, 0.1);
+        color: var(--primary-color);
+      }
+
+      .area {
+        background-color: rgba(0, 128, 0, 0.1);
+        color: green;
+      }
+    }
+
+    .viewRecipe {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: darken(#ff6b3d, 10%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}

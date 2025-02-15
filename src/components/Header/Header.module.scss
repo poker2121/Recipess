@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.header {
+  background-color: var(--card-background);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobileToggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
+
+    img {
+      height: 40px;
+      width: auto;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #ff6b3d;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+
+    .navLink {
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-family: 'Segoe UI', cursive;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &:hover {
+        color: var(--primary-color);
+        background-color: rgba(255, 107, 61, 0.1);
+      }
+
+      &.active {
+        background-color: var(--primary-color);
+        color: white;
+
+        &:hover {
+          background-color: var(--primary-color);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 1rem;
+
+    .container {
+      justify-content: flex-start;
+    }
+
+    .mobileToggle {
+      display: block;
+    }
+
+    .logo {
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 250px;
+      background-color: var(--card-background);
+      flex-direction: column;
+      padding: 5rem 1rem 1rem;
+      transition: right 0.3s ease;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
+      &.open {
+        right: 0;
+      }
+
+      .navLink {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    .logo {
+      h1 {
+        display: none;
+      }
+    }
+  }
+}

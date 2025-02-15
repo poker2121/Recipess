@@ -1,0 +1,74 @@
+.area {
+  padding: 2rem;
+
+  .areaGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .areaButton {
+    position: relative;
+    padding: 2rem 1rem;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, #ff6b3d, #ff8b6b);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .areaName {
+      position: relative;
+      z-index: 2;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    &.active {
+      border-color: #ff6b3d;
+
+      &::before {
+        opacity: 1;
+      }
+
+      .areaName {
+        color: white;
+      }
+    }
+  }
+
+  .mealsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2rem;
+    padding-top: 1rem;
+  }
+}
+
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: red;
+  font-size: 1.2rem;
+}
