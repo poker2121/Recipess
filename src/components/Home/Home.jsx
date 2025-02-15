@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { getAllCategories, getMealsByCategory, searchMealByName } from '../../services/api';
+import { getAllCategories, getMealsByCategory, searchMealByName, getMealById } from '../../services/api';
 import MealCard from '../MealCard/MealCard';
 import Loader from '../Loader/Loader';
 import styles from './Home.module.scss';
@@ -46,7 +46,14 @@ const Home = () => {
       try {
         const data = await getMealsByCategory(selectedCategory);
         if (data.meals) {
-          setMeals(data.meals);
+          // Fetch full details for each meal
+          const fullMealsData = await Promise.all(
+            data.meals.map(async (meal) => {
+              const detailsResponse = await getMealById(meal.idMeal);
+              return detailsResponse.meals[0];
+            })
+          );
+          setMeals(fullMealsData);
         }
       } catch (err) {
         setError('Failed to fetch meals');

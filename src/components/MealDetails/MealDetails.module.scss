@@ -108,6 +108,13 @@ $primary-color: #ff6b3d;
       grid-column: 1 / -1;
       text-align: center;
 
+      .linkButtons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+
       .youtubeLink {
         display: inline-block;
         padding: 1rem 2rem;

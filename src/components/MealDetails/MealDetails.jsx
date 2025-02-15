@@ -38,7 +38,8 @@ const MealDetails = () => {
             instructions: mealData.strInstructions,
             image: mealData.strMealThumb,
             ingredients: ingredients,
-            youtubeUrl: mealData.strYoutube
+            youtubeUrl: mealData.strYoutube,
+            source: mealData.strSource
           });
         } else {
           setError('Recipe not found');
@@ -99,14 +100,21 @@ const MealDetails = () => {
           <p>{meal.instructions}</p>
         </div>
 
-        {meal.youtubeUrl && (
-          <div className={styles.video}>
-            <h3>Video Tutorial</h3>
-            <a href={meal.youtubeUrl} target="_blank" rel="noopener noreferrer" className={styles.youtubeLink}>
-              Watch on YouTube
-            </a>
+        <div className={styles.video}>
+          <h3>Recipe Links</h3>
+          <div className={styles.linkButtons}>
+            {meal.youtubeUrl && (
+              <a href={meal.youtubeUrl} target="_blank" rel="noopener noreferrer" className={styles.youtubeLink}>
+                Watch on YouTube
+              </a>
+            )}
+            {meal.source && (
+              <a href={meal.source} target="_blank" rel="noopener noreferrer" className={styles.youtubeLink}>
+                View Recipe Source
+              </a>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
